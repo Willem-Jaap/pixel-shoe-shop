@@ -9,6 +9,7 @@
         "incremental": true,
         "esModuleInterop": true,
         "module": "esnext",
+        "target": "ES2017",
         "moduleResolution": "Bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,

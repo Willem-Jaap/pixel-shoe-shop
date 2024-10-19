@@ -1,8 +1,7 @@
 {
-    "name": "next-foundation",
-    "version": "2.0.0",
+    "name": "pixel-shoe-shop",
     "scripts": {
-        "dev": "next dev",
+        "dev": "next dev ",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
@@ -13,9 +12,9 @@
     "dependencies": {
         "@t3-oss/env-nextjs": "^0.11.1",
         "clsx": "^2.1.1",
-        "next": "^14.2.15",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
+        "next": "15.0.0-rc.1",
+        "react": "19.0.0-rc-b8ae38f8-20241018",
+        "react-dom": "19.0.0-rc-b8ae38f8-20241018",
         "tailwind-merge": "^2.5.3",
         "zod": "^3.23.8"
     },
@@ -25,20 +24,12 @@
         "@types/node": "22.7.5",
         "@types/react": "18.3.11",
         "autoprefixer": "^10.4.20",
-        "eslint": "^8.57.1",
-        "eslint-config-next": "^14.2.15",
-        "eslint-config-pixel": "^1.5.0",
+        "eslint": "^9.13.0",
         "postcss": "^8.4.47",
         "prettier": "^3.3.3",
         "prettier-plugin-tailwindcss": "^0.6.8",
         "tailwindcss": "^3.4.13",
         "typescript": "^5.6.3"
-    },
-    "eslintConfig": {
-        "extends": [
-            "pixel",
-            "next"
-        ]
     },
     "packageManager": "pnpm@9.1.0"
 }
