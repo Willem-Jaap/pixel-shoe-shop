@@ -29,8 +29,7 @@
             "~tests/*": ["src/tests/*"],
             "~types/*": ["src/types/*"],
             "~utils/*": ["src/utils/*"],
-            "~/*": ["src/*"],
-            "@/*": ["./*"]
+            "~/*": ["src/*"]
         }
     },
     "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "**/*.js"],

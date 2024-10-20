@@ -5,9 +5,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": "playwright test",
-        "test:debug": "playwright test --headed",
-        "test:report": "playwright show-report"
+        "test:unit": "jest"
     },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.1.2",
