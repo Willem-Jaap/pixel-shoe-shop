@@ -5,7 +5,10 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test:unit": "jest"
+        "test:unit": "jest 'src/tests/unit/.*.test.ts$'",
+        "test:integration": "jest 'src/tests/integration/.*.test.ts$'",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui"
     },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.1.2",

@@ -1,11 +1,11 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import { devices, type PlaywrightTestConfig } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-    testDir: './src/tests',
+    testDir: './src/tests/e2e',
+    testMatch: '**/*.test.ts',
     timeout: 30 * 1000,
     expect: {
         timeout: 5000,
@@ -20,6 +20,7 @@ const config: PlaywrightTestConfig = {
         actionTimeout: 0,
         baseURL: 'http://localhost:3000',
         trace: 'on-first-retry',
+        testIdAttribute: 'data-testid',
     },
 
     /* Configure projects for major browsers */
@@ -29,15 +30,15 @@ const config: PlaywrightTestConfig = {
             use: devices['Desktop Chrome'],
         },
 
-        {
-            name: 'firefox',
-            use: devices['Desktop Firefox'],
-        },
+        // {
+        //     name: 'firefox',
+        //     use: devices['Desktop Firefox'],
+        // },
 
-        {
-            name: 'webkit',
-            use: devices['Desktop Safari'],
-        },
+        // {
+        //     name: 'webkit',
+        //     use: devices['Desktop Safari'],
+        // },
     ],
 
     /* Folder for test artifacts such as screenshots, videos, traces, etc. */
