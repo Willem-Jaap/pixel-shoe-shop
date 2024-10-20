@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter } from '~components/ui/card';
 
 const ProductCard = ({ name, slug, price, imageSrc }: Product) => {
     return (
-        <Card>
+        <Card data-testid="product-card">
             <CardContent className="p-4">
                 <img
                     src={`/assets/images/${imageSrc}`}
@@ -15,7 +15,11 @@ const ProductCard = ({ name, slug, price, imageSrc }: Product) => {
                 <p className="mt-1 text-sm text-gray-500">${price.toFixed(2)}</p>
             </CardContent>
             <CardFooter>
-                <Button variant="primary" className="w-full" href={`/product/${slug}`}>
+                <Button
+                    variant="primary"
+                    className="w-full"
+                    href={`/product/${slug}`}
+                    data-testid="view-product">
                     View product
                 </Button>
             </CardFooter>

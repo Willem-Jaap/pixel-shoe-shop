@@ -1,11 +1,8 @@
-'use client';
-
 import ProductDetails from './product-details';
-import { Minus, Plus, ShoppingCart, Star } from 'lucide-react';
+import { Plus, ShoppingCart, Star } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 import { getProduct } from '~/products-api';
-import Header from '~components/header';
 import { formatPrice, getProductPrice } from '~utils/prices';
 
 interface Props {

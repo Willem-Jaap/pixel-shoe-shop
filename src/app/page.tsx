@@ -1,6 +1,5 @@
 import { getProducts } from '~/products-api';
 import FeaturedProduct from '~components/featured-product';
-import Header from '~components/header';
 import ProductCard from '~components/product-card';
 
 const Page = async () => {

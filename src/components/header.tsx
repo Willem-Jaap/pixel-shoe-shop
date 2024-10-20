@@ -64,7 +64,7 @@ const Header = () => {
                         </Link>
                     </nav>
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-                        <Button variant="ghost" size="sm">
+                        <Button variant="ghost" size="sm" data-testid="cart-button">
                             <ShoppingCart className="h-6 w-6" aria-hidden="true" />
                             <span className="ml-2">Cart (0)</span>
                         </Button>

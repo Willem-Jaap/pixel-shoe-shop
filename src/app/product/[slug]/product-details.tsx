@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { Minus, Plus, ShoppingBasketIcon, ShoppingCart } from 'lucide-react';
 import { toast } from 'sonner';
