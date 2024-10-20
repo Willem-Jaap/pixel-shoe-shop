@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 
 import { getProduct } from '~/products-api';
 import Header from '~components/header';
+import { formatPrice, getProductPrice } from '~utils/prices';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -51,11 +52,13 @@ const Page = async ({ params }: Props) => {
                     {/* Product info */}
                     <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
                         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                            Classic Comfort Running Shoes
+                            {product.name}
                         </h1>
                         <div className="mt-3">
                             <h2 className="sr-only">Product information</h2>
-                            <p className="text-3xl text-gray-900">$199.00</p>
+                            <p className="text-3xl text-gray-900">
+                                {formatPrice(getProductPrice(product, 1).totalPrice)}
+                            </p>
                         </div>
 
                         {/* Reviews */}

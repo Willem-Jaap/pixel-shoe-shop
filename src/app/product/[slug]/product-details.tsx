@@ -12,6 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '~components/ui/select';
+import { getProductPrice } from '~utils/prices';
 
 interface Props {
     product: Product;
@@ -19,18 +20,16 @@ interface Props {
 
 const ProductDetails = ({ product }: Props) => {
     const [quantity, setQuantity] = useState(1);
-    const [totalPrice, setTotalPrice] = useState(199);
-    const [discount, setDiscount] = useState(0);
-
-    const basePrice = 199;
+    const [totalPrice, setTotalPrice] = useState(getProductPrice(product, 1).totalPrice);
+    const [discount, setDiscount] = useState(getProductPrice(product, 1).discount);
 
     const decreaseQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
     const increaseQuantity = () => setQuantity(prev => prev + 1);
 
     useEffect(() => {
-        const newDiscount = quantity > 3 ? 10 : 0;
-        setDiscount(newDiscount);
-        setTotalPrice(basePrice * quantity - newDiscount);
+        const { vat, discount, totalPrice } = getProductPrice(product, quantity);
+        setTotalPrice(totalPrice);
+        setDiscount(discount);
     }, [quantity]);
 
     return (
