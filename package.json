@@ -20,6 +20,7 @@
         "next": "15.0.0-rc.1",
         "react": "19.0.0-rc-b8ae38f8-20241018",
         "react-dom": "19.0.0-rc-b8ae38f8-20241018",
+        "sonner": "^1.5.0",
         "tailwind-merge": "^2.5.3",
         "tailwindcss-animate": "^1.0.7",
         "zod": "^3.23.8"
