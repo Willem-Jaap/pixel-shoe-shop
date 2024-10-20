@@ -12,6 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '~components/ui/select';
+import cn from '~utils/cn';
 import { getProductPrice } from '~utils/prices';
 
 interface Props {
@@ -20,6 +21,7 @@ interface Props {
 
 const ProductDetails = ({ product }: Props) => {
     const [quantity, setQuantity] = useState(1);
+    const [color, setColor] = useState('white');
     const [totalPrice, setTotalPrice] = useState(getProductPrice(product, 1).totalPrice);
     const [discount, setDiscount] = useState(getProductPrice(product, 1).discount);
 
@@ -32,24 +34,44 @@ const ProductDetails = ({ product }: Props) => {
         setDiscount(discount);
     }, [quantity]);
 
+    const handleColorChange = (color: string) => {
+        setColor(color);
+    };
+
     return (
         <div className="mt-6">
-            <div>
-                <h3 className="text-sm text-gray-600">Color</h3>
-                <RadioGroup defaultValue="white" className="mt-2">
-                    <div className="flex items-center space-x-3">
-                        <Label className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-white ring-2 ring-indigo-500 ring-offset-2">
-                            <RadioGroupItem value="white" id="color-white" className="sr-only" />
-                        </Label>
-                        <Label className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-900">
-                            <RadioGroupItem value="black" id="color-black" className="sr-only" />
-                        </Label>
-                        <Label className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-indigo-500">
-                            <RadioGroupItem value="indigo" id="color-indigo" className="sr-only" />
-                        </Label>
-                    </div>
-                </RadioGroup>
-            </div>
+            <h3 className="text-sm text-gray-600">Color</h3>
+            <RadioGroup defaultValue="white" className="mt-2" onValueChange={handleColorChange}>
+                <div className="flex items-center space-x-3">
+                    <Label
+                        className={cn(
+                            'flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-white',
+                            {
+                                'ring-2 ring-indigo-500 ring-offset-2': color === 'white',
+                            },
+                        )}>
+                        <RadioGroupItem value="white" id="color-white" className="sr-only" />
+                    </Label>
+                    <Label
+                        className={cn(
+                            'flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-900',
+                            {
+                                'ring-2 ring-indigo-500 ring-offset-2': color === 'black',
+                            },
+                        )}>
+                        <RadioGroupItem value="black" id="color-black" className="sr-only" />
+                    </Label>
+                    <Label
+                        className={cn(
+                            'flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-indigo-500',
+                            {
+                                'ring-2 ring-indigo-500 ring-offset-2': color === 'indigo',
+                            },
+                        )}>
+                        <RadioGroupItem value="indigo" id="color-indigo" className="sr-only" />
+                    </Label>
+                </div>
+            </RadioGroup>
 
             <div className="mt-8">
                 <div className="flex items-center justify-between">
