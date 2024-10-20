@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { Minus, Plus, ShoppingBasketIcon, ShoppingCart } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { Product } from '~/products-api';
 import { Button } from '~components/ui/button';
@@ -13,7 +14,7 @@ import {
     SelectValue,
 } from '~components/ui/select';
 import cn from '~utils/cn';
-import { getProductPrice } from '~utils/prices';
+import { formatPrice, getProductPrice } from '~utils/prices';
 
 interface Props {
     product: Product;
@@ -36,6 +37,29 @@ const ProductDetails = ({ product }: Props) => {
 
     const handleColorChange = (color: string) => {
         setColor(color);
+    };
+
+    const handleAddToCart = () => {
+        const AddedToCart = () => (
+            <div className="flex w-[22rem] items-center gap-4 rounded-md border border-neutral-300 bg-white p-4 pr-8 shadow-lg">
+                <img
+                    src={`/assets/images/${product.imageSrc}`}
+                    alt={product.name}
+                    className="h-16 w-16 rounded-md object-contain"
+                />
+                <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">
+                        {product.name} x{quantity}
+                    </p>
+                    <p className="text-sm font-medium text-gray-900">{formatPrice(totalPrice)}</p>
+                </div>
+                <ShoppingBasketIcon className="h-6 w-6 text-gray-900" />
+            </div>
+        );
+
+        toast.custom(() => <AddedToCart />, {
+            duration: 10000,
+        });
     };
 
     return (
@@ -135,7 +159,7 @@ const ProductDetails = ({ product }: Props) => {
                 )}
             </div>
 
-            <Button className="mt-8 w-full" size="lg">
+            <Button className="mt-8 w-full" size="lg" onClick={handleAddToCart}>
                 <ShoppingCart className="mr-2 h-5 w-5" /> Add to cart
             </Button>
         </div>

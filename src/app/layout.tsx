@@ -4,6 +4,8 @@ import { Albert_Sans } from 'next/font/google';
 
 import '~styles/global.css';
 
+import { Toaster } from 'sonner';
+
 import { env } from '~/env';
 import Header from '~components/header';
 
@@ -26,6 +28,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                         </div>
                     </footer>
                 </div>
+                <Toaster />
             </body>
         </html>
     );
