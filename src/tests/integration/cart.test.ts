@@ -123,10 +123,30 @@ describe('CartService', () => {
         expect(cartService.getTotalPrice()).toBe(863);
     });
 
-    // it('should get the total VAT of the cart', () => {
-    //     cartService.addProduct({ id: 1, name: 'Product 1', price: 100 }, 2);
-    //     cartService.addProduct({ id: 2, name: 'Product 2', price: 200 }, 3);
+    it('should get the total VAT of the cart', () => {
+        cartService.addProduct(
+            {
+                id: 1,
+                name: 'Product 1',
+                slug: 'product-1',
+                imageSrc: 'product-1.webp',
+                description: 'Description 1',
+                price: 100,
+            },
+            2,
+        );
+        cartService.addProduct(
+            {
+                id: 2,
+                name: 'Product 2',
+                slug: 'product-2',
+                description: 'Description 2',
+                imageSrc: 'product-2.webp',
+                price: 200,
+            },
+            3,
+        );
 
-    //     expect(cartService.getTotalVat()).toBe(120);
-    // });
+        expect(cartService.getTotalVat()).toBe(168);
+    });
 });
