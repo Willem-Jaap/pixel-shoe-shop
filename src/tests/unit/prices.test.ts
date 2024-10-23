@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals';
+
 import { Product } from '~/products-api';
 import { formatPrice, getProductPrice } from '~utils/prices';
 

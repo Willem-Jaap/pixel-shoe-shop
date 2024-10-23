@@ -43,7 +43,9 @@ const ProductDetails = ({ product }: Props) => {
 
     const handleAddToCart = () => {
         const AddedToCart = () => (
-            <div className="flex w-[22rem] items-center gap-4 rounded-md border border-neutral-300 bg-white p-4 pr-8 shadow-lg">
+            <div
+                className="flex w-[22rem] items-center gap-4 rounded-md border border-neutral-300 bg-white p-4 pr-8 shadow-lg"
+                data-testid="product-added-to-cart">
                 <img
                     src={`/assets/images/${product.imageSrc}`}
                     alt={product.name}
@@ -110,11 +112,11 @@ const ProductDetails = ({ product }: Props) => {
                 </div>
                 <Select>
                     <SelectTrigger className="mt-2 w-full">
-                        <SelectValue placeholder="Select a size" />
+                        <SelectValue placeholder="Select a size" id="size" />
                     </SelectTrigger>
                     <SelectContent>
                         {[7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11].map(size => (
-                            <SelectItem key={size} value={size.toString()}>
+                            <SelectItem key={size} value={size.toString()} id={`size-${size}`}>
                                 {size}
                             </SelectItem>
                         ))}
@@ -131,18 +133,25 @@ const ProductDetails = ({ product }: Props) => {
                         variant="outline"
                         size="icon"
                         onClick={decreaseQuantity}
-                        disabled={quantity === 1}>
+                        disabled={quantity === 1}
+                        data-testid="product-decrease">
                         <Minus className="h-4 w-4" />
                     </Button>
-                    <span className="mx-4 text-gray-900">{quantity}</span>
-                    <Button variant="outline" size="icon" onClick={increaseQuantity}>
+                    <span className="mx-4 text-gray-900" data-testid="product-quantity">
+                        {quantity}
+                    </span>
+                    <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={increaseQuantity}
+                        data-testid="product-increase">
                         <Plus className="h-4 w-4" />
                     </Button>
                 </div>
             </div>
 
             {discount > 0 && (
-                <div className="mt-4 rounded-md bg-green-50 p-4">
+                <div className="mt-4 rounded-md bg-green-50 p-4" data-testid="product-discount">
                     <p className="font-medium text-green-700">
                         You save ${discount.toFixed(2)} with this order!
                     </p>
@@ -161,7 +170,11 @@ const ProductDetails = ({ product }: Props) => {
                 )}
             </div>
 
-            <Button className="mt-8 w-full" size="lg" onClick={handleAddToCart}>
+            <Button
+                className="mt-8 w-full"
+                size="lg"
+                onClick={handleAddToCart}
+                data-testid="product-add-to-cart">
                 <ShoppingCart className="mr-2 h-5 w-5" /> Add to cart
             </Button>
         </div>
