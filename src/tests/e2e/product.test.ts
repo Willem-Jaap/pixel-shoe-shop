@@ -22,7 +22,7 @@ test('can add to cart', async ({ page }) => {
     );
 });
 
-test('has discount with 3 products', async ({ page }) => {
+test('has discount with 4 products', async ({ page }) => {
     await page.goto('/product/classic-runner');
 
     await page.click('[data-testid="product-increase"]');
