@@ -18,7 +18,6 @@ describe('Product prices', () => {
 
         expect(price.basePrice).toBe(100);
         expect(price.discount).toBe(0);
-        expect(price.vat).toBe(21);
         expect(price.totalPrice).toBe(121);
         expect(price.totalVat).toBe(21);
     });
@@ -28,8 +27,7 @@ describe('Product prices', () => {
 
         expect(price.basePrice).toBe(100);
         expect(price.discount).toBe(0);
-        expect(price.vat).toBe(21);
-        expect(price.totalPrice).toBe(221);
+        expect(price.totalPrice).toBe(242);
         expect(price.totalVat).toBe(42);
     });
 
@@ -38,9 +36,8 @@ describe('Product prices', () => {
 
         expect(price.basePrice).toBe(100);
         expect(price.discount).toBe(10);
-        expect(price.vat).toBe(21);
-        expect(price.totalPrice).toBe(411);
-        expect(price.totalVat).toBe(84);
+        expect(price.totalPrice).toBe(471.9);
+        expect(price.totalVat).toBe(81.9);
     });
 
     it('formats price correctly', () => {

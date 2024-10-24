@@ -7,7 +7,6 @@ interface CartLine {
     quantity: number;
     basePrice: number;
     discount: number;
-    vat: number;
     totalPrice: number;
     totalVat: number;
 }
@@ -44,33 +43,25 @@ class CartService {
 
         if (line) {
             line.quantity += quantity;
-            // =========================================== //
-            // TUTORIAL: Comment out the following code block
-            // Remove the following code block
-            // =========================================== //
-            const { basePrice, discount, vat, totalPrice, totalVat } = getProductPrice(
+            const { basePrice, discount, totalPrice, totalVat } = getProductPrice(
                 product,
                 line.quantity,
             );
+
             line.basePrice = basePrice;
             line.discount = discount;
-            line.vat = vat;
             line.totalPrice = totalPrice;
             line.totalVat = totalVat;
             return;
         }
 
-        const { basePrice, discount, vat, totalPrice, totalVat } = getProductPrice(
-            product,
-            quantity,
-        );
+        const { basePrice, discount, totalPrice, totalVat } = getProductPrice(product, quantity);
         this.cart.lines.push({
             productId: product.id,
             product,
             quantity,
             basePrice,
             discount,
-            vat,
             totalPrice,
             totalVat,
         });

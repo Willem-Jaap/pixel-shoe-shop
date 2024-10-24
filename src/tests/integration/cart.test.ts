@@ -27,8 +27,7 @@ describe('CartService', () => {
         expect(cartService.cart.lines[0].quantity).toBe(2);
         expect(cartService.cart.lines[0].basePrice).toBe(100);
         expect(cartService.cart.lines[0].discount).toBe(0);
-        expect(cartService.cart.lines[0].vat).toBe(21);
-        expect(cartService.cart.lines[0].totalPrice).toBe(221);
+        expect(cartService.cart.lines[0].totalPrice).toBe(242);
         expect(cartService.cart.lines[0].totalVat).toBe(42);
     });
 
@@ -48,9 +47,8 @@ describe('CartService', () => {
         expect(cartService.cart.lines[0].quantity).toBe(5);
         expect(cartService.cart.lines[0].basePrice).toBe(100);
         expect(cartService.cart.lines[0].discount).toBe(10);
-        expect(cartService.cart.lines[0].vat).toBe(21);
-        expect(cartService.cart.lines[0].totalPrice).toBe(511);
-        expect(cartService.cart.lines[0].totalVat).toBe(105);
+        expect(cartService.cart.lines[0].totalPrice).toBe(592.9);
+        expect(cartService.cart.lines[0].totalVat).toBe(102.9);
     });
 
     it('should add a customer to the cart', () => {
@@ -95,10 +93,10 @@ describe('CartService', () => {
 
         expect(cartService.cart.lines).toHaveLength(1);
         expect(cartService.cart.lines[0].productId).toBe(2);
-        expect(cartService.generateOrderSummary().totalPrice).toBe(642);
+        expect(cartService.generateOrderSummary().totalPrice).toBe(726);
     });
 
-    it('should get the total price of the cart', () => {
+    it('should get the total price of the cart with multiple items', () => {
         cartService.addProduct(
             {
                 id: 1,
@@ -122,7 +120,34 @@ describe('CartService', () => {
             3,
         );
 
-        expect(cartService.getTotalPrice()).toBe(863);
+        expect(cartService.getTotalPrice()).toBe(968);
+    });
+
+    it('should get the total price of the cart with a discount', () => {
+        cartService.addProduct(
+            {
+                id: 1,
+                name: 'Product 1',
+                slug: 'product-1',
+                imageSrc: 'product-1.webp',
+                description: 'Description 1',
+                price: 100,
+            },
+            2,
+        );
+        cartService.addProduct(
+            {
+                id: 2,
+                name: 'Product 2',
+                slug: 'product-2',
+                description: 'Description 2',
+                imageSrc: 'product-2.webp',
+                price: 200,
+            },
+            4,
+        );
+
+        expect(cartService.getTotalPrice()).toBe(1197.9);
     });
 
     it('should get the total VAT of the cart', () => {
