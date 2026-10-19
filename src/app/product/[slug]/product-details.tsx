@@ -32,7 +32,7 @@ const ProductDetails = ({ product }: Props) => {
     const increaseQuantity = () => setQuantity(prev => prev + 1);
 
     useEffect(() => {
-        const { vat, discount, totalPrice } = getProductPrice(product, quantity);
+        const { discount, totalPrice } = getProductPrice(product, quantity);
         setTotalPrice(totalPrice);
         setDiscount(discount);
     }, [quantity]);
