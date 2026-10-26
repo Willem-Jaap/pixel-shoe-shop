@@ -44,7 +44,7 @@ const ProductDetails = ({ product }: Props) => {
     const handleAddToCart = () => {
         const AddedToCart = () => (
             <div
-                className="flex w-[22rem] items-center gap-4 rounded-md border border-neutral-300 bg-white p-4 pr-8 shadow-lg"
+                className="flex w-88 items-center gap-4 rounded-md border border-neutral-300 bg-white p-4 pr-8 shadow-lg"
                 data-testid="product-added-to-cart">
                 <img
                     src={`/assets/images/${product.imageSrc}`}

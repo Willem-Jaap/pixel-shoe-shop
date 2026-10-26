@@ -18,7 +18,7 @@ const Page = async ({ params }: Props) => {
     }
 
     return (
-        <main className="flex-grow">
+        <main className="grow">
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
                     <div className="flex flex-col-reverse">
@@ -66,7 +66,7 @@ const Page = async ({ params }: Props) => {
                                     {[...Array(5)].map((_, i) => (
                                         <Star
                                             key={i}
-                                            className="h-5 w-5 flex-shrink-0 text-yellow-400"
+                                            className="h-5 w-5 shrink-0 text-yellow-400"
                                         />
                                     ))}
                                 </div>
