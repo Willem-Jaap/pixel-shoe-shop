@@ -7,7 +7,7 @@ const Page = async () => {
 
     return (
         <>
-            <main className="flex-grow">
+            <main className="grow">
                 <FeaturedProduct />
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" id="products">
                     <h2 className="mb-6 text-3xl font-extrabold text-gray-900">Our Products</h2>

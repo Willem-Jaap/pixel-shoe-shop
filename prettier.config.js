@@ -8,4 +8,5 @@ module.exports = {
     importOrder: ['^react$', '^next$', '<THIRD_PARTY_MODULES>', '', '^~(.*)$'],
     importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
     importOrderTypeScriptVersion: '5.0.0',
+    tailwindStylesheet: './src/styles/global.css',
 };
